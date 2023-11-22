@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="app1786.MainPage">
+
+
+    <StackLayout>
+
+        <!-- Save button -->
+        <Label
+            Text="NEW HIKE CREATION"
+            FontSize="20"
+            FontAttributes="Bold"
+            TextColor="Black"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+
+        <!-- Details fields -->
+        <ScrollView>
+            <StackLayout Padding="24" Spacing="6">
+                <Entry Placeholder="Name" x:Name="nameEditText" />
+                <Entry Placeholder="Location" x:Name="locationEditText" />
+                <Entry Placeholder="Date (yyyy-MM-dd)" x:Name="dateEditText" />
+
+                <!-- Radio Buttons for Parking Availability -->
+                <Label Text="Parking Availability" FontSize="16" Margin="0,20,0,0" />
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <RadioButton x:Name="yesRadioButton" />
+                    <Label Text="Yes" VerticalOptions="Center" />
+                    <RadioButton x:Name="noRadioButton" />
+                    <Label Text="No" VerticalOptions="Center" />
+                </StackLayout>
+
+                <Entry Placeholder="Length" x:Name="lengthEditText" />
+                <Entry Placeholder="Difficulty" x:Name="difficultyEditText" />
+                <Editor Placeholder="Description" AutoSize="TextChanges" x:Name="descriptionEditText" />
+
+                <Button Text="Submit" Clicked="OnSubmitButtonClicked" />
+            </StackLayout>
+        </ScrollView>
+        <ListView x:Name="hikeListView" ItemsSource="{Binding HikeList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Label for "Hike's Name" -->
+                            <Label Text="Hike's Name:" VerticalOptions="Center" Grid.Column="0" />
+
+                            <!-- Label for the item name -->
+                            <Label Text="{Binding Name}" VerticalOptions="Center" FontAttributes="Bold" FontSize="18" Grid.Column="1" />
+
+                            <!-- "Delete" button aligned to the right -->
+                            <Button Text="Delete" Clicked="OnDeleteButtonClicked" BackgroundColor="#E74C3C" TextColor="White" CornerRadius="10" WidthRequest="80" HeightRequest="40" Grid.Column="2" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
+        <!-- Message Label -->
+        <Label x:Name="messageLabel" Text="" TextColor="Red" HorizontalOptions="Center" />
+
+    </StackLayout>
+
+
+</ContentPage>

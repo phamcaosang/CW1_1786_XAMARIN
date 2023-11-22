@@ -1,0 +1,19 @@
+# Xamarin-specific ignores
+bin/
+obj/
+
+# Visual Studio files
+*.suo
+*.user
+*.sln.cache
+
+# macOS-specific ignores
+.DS_Store
+
+# Build output
+/Build/
+/packages/
+/node_modules/
+```
+
+Feel free to modify this example to suit your specific project requirements.
